@@ -27,12 +27,12 @@ imagem_path = input("Digite o caminho da imagem de entrada (BMP ou PNG): ")
 
 # Carrega a imagem, converte para escala de cinza e redimensiona para 28x28
 try:
-    img = Image.open(imagem_path).convert('L')
+    img = Image.open(imagem_path).convert('RGB')
     img = img.resize((28, 28))
     img_array = np.array(img).astype('float32') / 255.0
     # Expande dimensões para o formato esperado pelo modelo (1, 28, 28, 1)
     img_array = np.expand_dims(img_array, axis=0)  # batch size 1
-    img_array = np.expand_dims(img_array, axis=-1)  # canal
+
 except Exception as e:
     print(f"Erro ao processar a imagem: {e}")
     exit()
