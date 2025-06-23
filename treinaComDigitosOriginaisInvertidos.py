@@ -70,7 +70,7 @@ x_test_filtered = np.stack([x_test_filtered]*3, axis=-1)
 ######              Carregar Imagens Invertidas e Branco e Azul          ##########
 ###################################################################################
 
-folder_inverted = 'mnist_bmp_inverted_final'  # pasta que foi criada pelo ultimo inversor de cores
+folder_inverted = 'mnist_bmp_inverted'  # pasta que foi criada pelo ultimo inversor de cores
 x_inverted_train, y_inverted_train = carregar_imagens(folder_inverted, digits_to_use)
 x_inverted_test, y_inverted_test = carregar_imagens(folder_inverted, digits_to_use)
 
@@ -117,8 +117,7 @@ datagen = ImageDataGenerator(
     height_shift_range=0.1,   # desloca verticalmente  mesmo funcionamento do zoom porém verticalmente
     horizontal_flip=False,    # MNIST não se beneficia de inversão horizontal (6 vira 9, etc.)
     vertical_flip=False,      # MNIST não se beneficia de inversão vertical
-    brightness_range=[0.7,1.3], # variação de brilho
-    channel_shift_range=20.0,   # mudança de intensidade nos canais RGB
+    
     fill_mode='nearest'       # preenche pixels novos criados por transformações para completar a imagem mesmo
 )
 # prepara o gerador para o conjunto de treinamento
@@ -133,18 +132,17 @@ datagen.fit(x_train_total)
 model = Sequential([
     Conv2D(32, kernel_size=(3,3), activation='relu', input_shape=(28,28,3), padding='same'), # input_shape é (altura, largura, canais(3 por ser RGB))
     BatchNormalization(),
+    Conv2D(32, kernel_size=(3,3), activation='relu', input_shape=(28,28,3), padding='same'), # input_shape é (altura, largura, canais(3 por ser RGB))
+    BatchNormalization(),
     MaxPooling2D(pool_size=(2,2)),
     Dropout(0.3), # adicionado Dropout após o primeiro bloco Conv+Pool  sempre previnindo overfitting
 
     Conv2D(64, kernel_size=(3,3), activation='relu', padding='same'),
     BatchNormalization(),
-    MaxPooling2D(pool_size=(2,2)),
-    Dropout(0.3), # adicionado Dropout após o segundo bloco Conv+Pool  sempre previnindo overfitting
-
-    Conv2D(128, kernel_size=(3,3), activation='relu', padding='same'),
+    Conv2D(64, kernel_size=(3,3), activation='relu', input_shape=(28,28,3), padding='same'), # input_shape é (altura, largura, canais(3 por ser RGB))
     BatchNormalization(),
     MaxPooling2D(pool_size=(2,2)),
-    Dropout(0.4), # adicionado Dropout após o segundo bloco Conv+Pool  sempre previnindo overfitting
+    Dropout(0.3), # adicionado Dropout após o segundo bloco Conv+Pool  sempre previnindo overfitting
 
     Flatten(),
     Dense(256, activation='relu'),
@@ -168,7 +166,7 @@ model.compile(optimizer='adam',
 ######                        Treino do modelo                           ##########
 ###################################################################################
 model.fit(datagen.flow(x_train_total, y_train_categorical, batch_size=(128)),
-          epochs=25,
+          epochs=20,
           validation_data=(x_test_total, y_test_categorical))
 
 #aumentei o numero de epocas para ser mais preciso
