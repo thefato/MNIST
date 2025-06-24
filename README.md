@@ -25,6 +25,7 @@ Este projeto utiliza técnicas de Deep Learning para classificar dígitos manusc
     3- python inversorCoresAzulBranco.py
     4- python treinaComDigitosOriginaisInvertidos.py
     5- python reconhecedorAvancadoDigitos.py
+    #Ao usar o reconhecedorAvancadoDigitos, basta carregar o modelo breviamente feito (TreinamentoFinal) e escolher se quer usar o .keras ou .h5 e escolher a imagem desejada para o reconhecimento
     ```
 
 ## Referências
