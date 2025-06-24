@@ -70,7 +70,7 @@ x_test_filtered = np.stack([x_test_filtered]*3, axis=-1)
 ######              Carregar Imagens Invertidas e Branco e Azul          ##########
 ###################################################################################
 
-folder_inverted = 'mnist_bmp_inverted'  # pasta que foi criada pelo ultimo inversor de cores
+folder_inverted = 'mnist_bmp_inverted_final'  # pasta que foi criada pelo ultimo inversor de cores
 x_inverted_train, y_inverted_train = carregar_imagens(folder_inverted, digits_to_use)
 x_inverted_test, y_inverted_test = carregar_imagens(folder_inverted, digits_to_use)
 
