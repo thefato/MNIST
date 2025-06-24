@@ -23,7 +23,9 @@ except Exception as e:
     exit()
 
 # Solicita o nome da imagem de entrada
-imagem_path = input("Digite o caminho da imagem de entrada (BMP ou PNG): ")
+input_dir = 'imgs'
+nome_imagem = input("Digite o caminho da imagem de entrada (BMP ou PNG): ")
+imagem_path = os.path.join(input_dir, nome_imagem)
 
 # Carrega a imagem, converte para escala de cinza e redimensiona para 28x28
 try:
