@@ -1,0 +1,25 @@
+# Ignorar pastas de ambiente virtual Python
+venv/
+.venv/ # Algumas ferramentas criam .venv ao invés de venv
+
+# Ignorar pastas de cache e compilação Python
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Ignorar arquivos de dados ou logs que não devem ser versionados
+*.log
+*.sqlite3 # Para bancos de dados SQLite locais
+.env # Variáveis de ambiente
+.vscode/ # Configurações de usuário do VS Code específicas para o projeto, se não quiser compartilhar
+
+# Ignorar IDEs específicas
+.idea/ # Pastas do PyCharm
+
+# Ignorar arquivos do sistema operacional
+.DS_Store # macOS
+Thumbs.db # Windows
+
+#ignorar arquivos de imagem, se nao, complica de subir
+*.bmp
