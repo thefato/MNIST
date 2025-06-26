@@ -12,7 +12,7 @@ from PIL import Image
 (x_train, y_train), _ = mnist.load_data()
 
 # diretorio onde as imagens serão salvas
-output_dir = 'mnist_bmp'
+output_dir = "mnist_bmp"
 os.makedirs(output_dir, exist_ok=True)
 
 # dicionários para contar as imagens de cada classe

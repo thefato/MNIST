@@ -17,6 +17,11 @@ Este projeto utiliza técnicas de Deep Learning para classificar dígitos manusc
     pip install tensorflow
     pip install numpy
     pip install pillow
+
+    ou utilize
+   
+    pip install -r requirements.txt 
+   
     ```
 2. Execute o treinamento do modelo nessa ordem(treinamento ja feito, e arquivos mantidos):
     ```bash
@@ -45,3 +50,9 @@ Após o treinamento, o modelo é capaz de reconhecer dígitos manuscritos em dif
  azul com fundo branco.
 
 O modelo treinado mantém alta precisão e pode ser testado com imagens personalizadas.
+
+## Autores
+- Gabriel Fonseca
+- Ernesto Terra dos Santos
+- Marcus Apolinário
+- Gabriel Antonietti

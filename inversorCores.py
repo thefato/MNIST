@@ -8,15 +8,15 @@ import os
 from PIL import Image
 
 # Diretório onde as imagens estão salvas
-input_dir = 'mnist_bmp'
+input_dir = "mnist_bmp"
 # Diretório onde as imagens invertidas serão salvas
-output_dir = 'mnist_bmp_inverted'
+output_dir = "mnist_bmp_inverted"
 
 os.makedirs(output_dir, exist_ok=True)
 
 # Lista todos os arquivos BMP no diretório de entrada
 for filename in os.listdir(input_dir):
-    if filename.endswith('.bmp'):
+    if filename.endswith(".bmp"):
         filepath = os.path.join(input_dir, filename)
         # Abre a imagem
         img = Image.open(filepath)

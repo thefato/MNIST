@@ -23,15 +23,15 @@ except Exception as e:
     exit()
 
 # Solicita o nome da imagem de entrada
-input_dir = 'imgs'
+input_dir = "imgs"
 nome_imagem = input("Digite o caminho da imagem de entrada (BMP ou PNG): ")
 imagem_path = os.path.join(input_dir, nome_imagem)
 
 # Carrega a imagem, converte para escala de cinza e redimensiona para 28x28
 try:
-    img = Image.open(imagem_path).convert('RGB')
+    img = Image.open(imagem_path).convert("RGB")
     img = img.resize((28, 28))
-    img_array = np.array(img).astype('float32') / 255.0
+    img_array = np.array(img).astype("float32") / 255.0
     # Expande dimensões para o formato esperado pelo modelo (1, 28, 28, 1)
     img_array = np.expand_dims(img_array, axis=0)  # batch size 1
 
